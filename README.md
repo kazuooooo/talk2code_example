@@ -4,7 +4,9 @@ Sample implementatino of Talk2Code(Talk to Sourcecode) using LangChain.
 # How to use
 ## Requirement
 Python3
-
+[ActiveLoop Account
+](https://github.com/kazuooooo/talk2code_example)
+[OpenAI Account](https://openai.com/)
 ## Setup
 ```
 # create venv
