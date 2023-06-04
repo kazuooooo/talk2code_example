@@ -15,7 +15,7 @@ def load_docs(src_dir: str) -> list:
     root_dir: Root directory to load documents from.
     """
     docs = []
-    for dirpath, filenames in os.walk(src_dir):
+    for dirpath, dirnames, filenames in os.walk((src_dir)):
         for file in filenames:
             try:
                 loader = TextLoader(os.path.join(dirpath, file), encoding="utf-8")
@@ -41,14 +41,16 @@ def chunks_to_embeddings(chunks: list, data_set_name: str) -> list:
     print("Embedding...")
     embeddings = OpenAIEmbeddings()
     DeepLake.from_documents(
-        chunks, embeddings, dataset_path=f"hub://${os.getenv('ACTIVELOOP_ACCOUNT_NAME')}/{data_set_name}"
+        chunks, embeddings, dataset_path=f"hub://{os.getenv('ACTIVELOOP_ACCOUNT_NAME')}/{data_set_name}"
     )
     print("Done!")
 
 
 # ファイルをDocumentとして読み込む
 docs = load_docs(os.getenv('SRC_DIR'))
+
 # ドキュメントをチャンクに分割
 chunks = documents_to_chunks(docs)
+
 # Embeddingして、DeepLakeにアップロード
-embeddings = chunks_to_embeddings(chunks, "langchain-code-2")
+embeddings = chunks_to_embeddings(chunks, os.getenv('DATA_SET_NAME'))
