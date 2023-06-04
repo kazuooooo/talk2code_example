@@ -1,7 +1,5 @@
 # talk2code_example
 Sample implementatino of Talk2Code(Talk to Sourcecode) using LangChain.
-![CleanShot 2023-06-04 at 19 38 00](https://github.com/kazuooooo/talk2code_example/assets/6919381/fe0c2db3-c880-4fd9-bc29-83c83da612e2)
-
 
 # How to use
 ## Requirement
